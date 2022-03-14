@@ -1,5 +1,3 @@
-// ignore_for_file: public_member_api_docs
-
 import 'dart:math';
 
 import 'package:bloc/bloc.dart';
@@ -83,7 +81,6 @@ class PuzzleBloc extends Bloc<PuzzleEvent, PuzzleState> {
     );
   }
 
-  /// Build a randomized, solvable puzzle of the given size.
   Puzzle _generatePuzzle(int size, {bool shuffle = true}) {
     final correctPositions = <Position>[];
     final currentPositions = <Position>[];
@@ -92,14 +89,17 @@ class PuzzleBloc extends Bloc<PuzzleEvent, PuzzleState> {
     // Create all possible board positions.
     for (var y = 1; y <= size; y++) {
       for (var x = 1; x <= size; x++) {
-        if (x == size && y == size) {
-          correctPositions.add(whitespacePosition);
-          currentPositions.add(whitespacePosition);
-        } else {
-          final position = Position(x: x, y: y);
-          correctPositions.add(position);
-          currentPositions.add(position);
-        }
+        // if (x == size && y == size) {
+        //   correctPositions.add(whitespacePosition);
+        //   currentPositions.add(whitespacePosition);
+        // } else {
+        //   final position = Position(x: x, y: y);
+        //   correctPositions.add(position);
+        //   currentPositions.add(position);
+        // }
+        final position = Position(x: x, y: y);
+        correctPositions.add(position);
+        currentPositions.add(position);
       }
     }
 
@@ -133,8 +133,6 @@ class PuzzleBloc extends Bloc<PuzzleEvent, PuzzleState> {
     return puzzle;
   }
 
-  /// Build a list of tiles - giving each tile their correct position and a
-  /// current position.
   List<Tile> _getTileListFromPositions(
     int size,
     List<Position> correctPositions,
@@ -158,4 +156,13 @@ class PuzzleBloc extends Bloc<PuzzleEvent, PuzzleState> {
           )
     ];
   }
+
+  // PuzzleBloc() : super(PuzzleInitial());
+
+  // @override
+  // Stream<PuzzleState> mapEventToState(
+  //   PuzzleEvent event,
+  // ) async* {
+  //   // TODO: implement mapEventToState
+  // }
 }
