@@ -332,7 +332,7 @@ class SimplePuzzleTile extends StatelessWidget {
         ),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
-            Radius.circular(12),
+            Radius.circular(48),
           ),
         ),
       ).copyWith(
@@ -353,7 +353,8 @@ class SimplePuzzleTile extends StatelessWidget {
           ? () => context.read<PuzzleBloc>().add(TileTapped(tile))
           : null,
       child: Text(
-        tile.value.toString(),
+        '',
+        // tile.value.toString(),
         // semanticsLabel: context.l10n.puzzleTileLabelText(
         //   tile.value.toString(),
         //   tile.currentPosition.x.toString(),
