@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:flutter/foundation.dart';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -108,11 +109,15 @@ class PuzzleBloc extends Bloc<PuzzleEvent, PuzzleState> {
       currentPositions.shuffle(random);
     }
 
+    // debugPrint('correctPositions: $correctPositions');
+    // debugPrint('currentPositions: $currentPositions');
+
     var tiles = _getTileListFromPositions(
       size,
       correctPositions,
       currentPositions,
     );
+    debugPrint('tiles: $tiles');
 
     var puzzle = Puzzle(tiles: tiles);
 
